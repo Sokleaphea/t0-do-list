@@ -1,6 +1,5 @@
 import { useState } from 'react'
-import './App.css'
-import './components/TaskInput.jsx'
+import './App.css';
 import TaskInput from './components/TaskInput.jsx';
 import TaskItem from './components/TaskItem';
 
@@ -14,7 +13,7 @@ function App() {
     const newTask = { 
       text: taskText, 
       completed: false,
-      priority
+      priority: priority
     };
     setTasks([...tasks, newTask]);
   };
@@ -59,7 +58,6 @@ function App() {
           <TaskItem
             key={index}
             task={task}
-            // completed={task.completed}
             onToggleComplete={() => toggleComplete(index)}
             onDelete={() => deleteTask(index)}
           />

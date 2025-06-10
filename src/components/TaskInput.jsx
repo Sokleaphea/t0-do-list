@@ -9,9 +9,21 @@ function TaskInput({ onAddTask }) {
     const handleSubmit = (e) => {
         e.preventDefault();
         if (inputValue.trim() === '') return;
-        onAddTask(inputValue);
+        onAddTask(inputValue, priority);
         setInputValue('');
     }
+    const selectPriority = () => {
+        switch (priority) {
+            case 'high':
+                return {color: 'red'};
+            case 'medium':
+                return {color: 'orange'};
+            case 'low':
+                return {color: 'lightblue'};
+            default:
+                return {color: 'black'};
+        }
+    };
     return (
         <form onSubmit={handleSubmit}>
             <input 
@@ -23,7 +35,10 @@ function TaskInput({ onAddTask }) {
                     padding: 0
                 }}
             />
-            <select value={priority} onChange={(e) => setPriority(e.target.value)}>
+            <select 
+                value={priority} 
+                onChange={(e) => setPriority(e.target.value)} 
+                style={selectPriority()}>
                 <option value="High">High</option>
                 <option value="Medium">Medium</option>
                 <option value="Low">Low</option>
